@@ -139,7 +139,7 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 
 	}
   else{  
-    fs.readFile(filename, "binary", function(err, file) {
+    fs.readFile(filename, "binary", function(err, data) {
       if(err) {        
         res.writeHead(500, {"Content-Type": "text/plain"});
         res.write(err + "\n");
@@ -148,9 +148,8 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
         return;
       }
 
-      res.writeHead(200, {"Content-Type": "text/html"});
-      res.write(file, "binary");
-       res.end();
+      res.writeHead(200);
+    res.end(data);
     });
 	}
  }).listen(parseInt(port, 10));
