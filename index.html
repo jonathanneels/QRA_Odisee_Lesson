@@ -196,7 +196,7 @@ $('#arPage').attr('src', URL)
 
 
  arCheckMatchInterval=setInterval(() => { 
- if($("#arPage")[0].contentWindow.timeWithoutMatch >4){
+ if($("#arPage")[0].contentWindow.timeWithoutMatch >2){
  $("#arPage")[0].contentWindow.timeWithoutMatch=0; 
  
 clearInterval(arCheckMatchInterval);
