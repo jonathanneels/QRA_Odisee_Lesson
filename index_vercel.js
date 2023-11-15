@@ -5,8 +5,7 @@ var http = require("http"),
   port = process.env.PORT || 8010;
 console.log("Server launched => 127.0.0.1:" + port);
 
-const directoryPath = path.join(__dirname, 'movelists');
-
+ 
  var memoNote = {user:"",text:"",date:dateTimeNow()};
  var memoList=[];
 
@@ -138,18 +137,19 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 		    		    res.end(feedback); 
 
 	}
-  else{  
-    fs.readFile(filename, "binary", function(err, data) {
-      if(err) {        
-        res.writeHead(500, {"Content-Type": "text/plain"});
-        res.write(err + "\n");
-        res.end();
-			  console.log(err); 
-        return;
-      }
+    else{  
+  fs.readFile(__dirname + feedbackUrl, function (err,data) {//REF:https://stackoverflow.com/questions/16333790/node-js-quick-file-server-static-files-over-http
+    if (err) {
+     // res.writeHead(404);
+   //   res.end(JSON.stringify(err));
+   //   return;
+	      res.writeHead(404);
+    res.end("Nothing to be found here...");
 
-      res.writeHead(200);
-    res.end(data);
-    });
-	}
+    }else{
+    res.writeHead(200);
+    res.end(data);}
+  });
+  
+  }
  }).listen(parseInt(port, 10));
