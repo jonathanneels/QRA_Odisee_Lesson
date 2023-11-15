@@ -36,11 +36,11 @@ function getStream(stream) {
   });
 }
 
-http.createServer(function(request, response) {
+http.createServer(function(request, res) {
   var uri = url.parse(request.url).pathname
     , filename =decodeURI( path.join(process.cwd(), uri));
 
-var feedbackUrl = req.url;
+var feedbackUrl = request.url;
    if (feedbackUrl.trim() === '/') { 
        //  res.writeHead(200, {'Content-Type': 'text/html' , 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
                    //       fs.createReadStream('iframe.html').pipe(res);//  fs.createReadStream('default_arjs_test.html').pipe(res); 
@@ -141,17 +141,16 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
   else{  
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        
-        response.writeHead(500, {"Content-Type": "text/plain"});
-        response.write(err + "\n");
-        response.end();
+        res.writeHead(500, {"Content-Type": "text/plain"});
+        res.write(err + "\n");
+        res.end();
 			  console.log(err); 
         return;
       }
 
-      response.writeHead(200, {"Content-Type": "text/html"});
-      response.write(file, "binary");
-	  console.log(filename + " 200 ok!")
-      response.end();
+      res.writeHead(200, {"Content-Type": "text/html"});
+      res.write(file, "binary");
+       res.end();
     });
 	}
  }).listen(parseInt(port, 10));
