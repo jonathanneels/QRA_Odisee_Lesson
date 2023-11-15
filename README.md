@@ -15,7 +15,7 @@ If there is a match the "iframe.html" gets loaded and then shows your info.
 You can generate your own images by using the QRAmaker (see static folder). 
 Do note: 
 for an easy to read qr-code make sure you host your index file with the images. 
-If so, you can use a spatial for the qr-home in the QrA_Maker. 
+If so, you can use a "space-character" for the qr-home in the QrA_Maker. 
 
 You can find all images (and QRA-codes) inside the folder static/A. 
 The folder A is short. We need to make a short path so the QR-scanning will be easier and less error-prone. 
