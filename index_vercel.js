@@ -11,7 +11,7 @@ http.createServer(function(request, response) {
   var uri = url.parse(request.url).pathname
     , filename =decodeURI( path.join(process.cwd(), uri));
 
-  if (fs.statSync(filename).isDirectory()){ filename += '/QrAndQRACOMBINED.html';} 
+  if (fs.statSync(filename).isDirectory()){ filename += '/index.html';} 
 
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        
