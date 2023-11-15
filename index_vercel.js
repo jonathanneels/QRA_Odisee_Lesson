@@ -27,5 +27,4 @@ http.createServer(function(request, response) {
 	  console.log(filename + " 200 ok!")
       response.end();
     });
-  });}
-}).listen(parseInt(port, 10));
+ }).listen(parseInt(port, 10));
