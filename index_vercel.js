@@ -112,7 +112,7 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 	
 	
 
-     else if (fs.statSync(filename).isDirectory()){ filename += '/index.html';}//'/aikido_start.html';}
+     else if (fs.statSync(filename).isDirectory()){ filename += '/index.html';} 
 
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        
@@ -128,5 +128,4 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 	  console.log(filename + " 200 ok!")
       response.end();
     });
-  });}
-}).listen(parseInt(port, 10));
+ }).listen(parseInt(port, 10));
